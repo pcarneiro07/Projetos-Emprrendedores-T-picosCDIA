@@ -37,7 +37,6 @@ A pasta ZIP contém:
 │
 ├── app.py                 → código principal do Streamlit
 ├── requirements.txt       → lista de dependências
-└── (outros arquivos opcionais)
 
 🛠 Como Rodar o Projeto no VSCode (LOCAL)
 1. Instalar Python
@@ -48,23 +47,6 @@ Verificar versão:
 
 python --version
 
-2. Criar ambiente virtual (recomendado)
-
-No VSCode, abra o terminal na pasta do projeto (a pasta extraída da ZIP):
-
-python -m venv venv
-
-
-Ativar:
-
-Windows:
-
-venv\Scripts\activate
-
-
-Mac/Linux:
-
-source venv/bin/activate
 
 3. Instalar dependências
 pip install -r requirements.txt
@@ -75,24 +57,7 @@ pip install -r requirements.txt
 
 requirements
 
-4. Configurar as chaves API
 
-Crie um arquivo:
-
-.env
-
-
-E coloque:
-
-OPENAI_API_KEY=sua_chave_aqui
-PGUSER=...
-PGPASSWORD=...
-PGHOST=...
-PGDATABASE=...
-PGPORT=5432
-
-
-Essas são as credenciais para conectar no Supabase.
 
 5. Rodar a aplicação
 
@@ -201,4 +166,5 @@ Pedro Carneiro
 Raphael von Zuben
 Pedro Lucas Amâncio
 Leonardo Marchi
+Gabriel Joaquim
 Gabriel Joaquim
