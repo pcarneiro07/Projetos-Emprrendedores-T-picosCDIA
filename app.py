@@ -507,7 +507,7 @@ def _compute_variable_criticality(results: dict, row_df: pd.DataFrame, feature_s
 from openai import OpenAI
 
 # inicialização correta
-client = OpenAI(api_key="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")
+client = OpenAI(api_key="sua_api_key")
 
 # --------------------------
 # CLASSIFICAÇÃO QUALITATIVA
@@ -667,6 +667,7 @@ with tabs[1]:
 
     st.dataframe(styled_quanti, use_container_width=True)
     st.caption("Quanto mais 'normal', mais verde; Quanto mais 'crítico', mais vermelho")
+
 
 
 
