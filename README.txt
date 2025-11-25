@@ -1,25 +1,24 @@
 🌊 Monitor Artemis — Detecção de Anomalias em Dados Hídricos
 
-Projeto executado localmente no VSCode usando Streamlit + Python
+Sistema desenvolvido em Python + Streamlit, executado localmente no VSCode, com foco em análise inteligente e detecção automática de anomalias em dados hídricos provenientes do Supabase.
 
 📌 Descrição Geral
 
-O Monitor Artemis é um sistema interativo desenvolvido para análise e detecção de anomalias em dados hídricos.
-Ele integra:
+O Monitor Artemis é um dashboard interativo que integra:
 
 Pipeline de ingestão direto do Supabase
 
-Normalização e cálculo de Z-scores
+Normalização e cálculo de Z-scores robustos (MAD)
 
 Ensemble de modelos de detecção de outliers
 
-Clusterização automática dos níveis de anomalia
+Clusterização automática para níveis de anomalia
 
-Dashboard interativo em Streamlit
+Dashboard em Streamlit
 
-Resumo automático diário gerado por IA (OpenAI)
+Resumo diário gerado automaticamente por IA (OpenAI)
 
-O resultado é um índice diário de anomalia (0–100) classificado como:
+O sistema produz um índice diário (0–100) classificado como:
 
 Normal
 
@@ -27,65 +26,59 @@ Atenção
 
 Crítica
 
-E uma análise detalhada, incluindo abas de variáveis de qualidade da água (Quali) e nível/vazão (Quanti).
+E entrega uma análise técnica detalhada distribuída nas abas:
 
-🧩 Arquivos do Projeto
+Quali — variáveis de qualidade da água
+
+Quanti — nível e vazão
+
+Resumo IA — interpretação textual automática sem alucinações
+
+🧩 Estrutura do Projeto
 
 A pasta ZIP contém:
 
-📁 monitor-artemis/
+monitor-artemis/
 │
-├── app.py                 → código principal do Streamlit
-├── requirements.txt       → lista de dependências
+├── app.py               # Código principal do Streamlit
+├── requirements.txt     # Dependências do projeto
 
 🛠 Como Rodar o Projeto no VSCode (LOCAL)
-1. Instalar Python
+1. Verifique o Python
 
-Use Python 3.10 ou superior.
-
-Verificar versão:
+Use Python 3.10+.
 
 python --version
 
-
-3. Instalar dependências
+2. Instale as dependências
 pip install -r requirements.txt
 
-
-(requirements.txt carregado pelo projeto:)
-
-
-requirements
-
-
-
-5. Rodar a aplicação
-
-No terminal do VSCode:
-
+3. Execute a aplicação
 streamlit run app.py
 
 
-O dashboard abrirá automaticamente no navegador:
+O dashboard abrirá automaticamente em:
 
-http://localhost:8501
-
-
-Arquivo principal:
-
-
-app
+👉 http://localhost:8501
 
 📊 Funcionalidades Principais
-✔ Card de índice diário
+✔ Índice diário
 
-Mostra o nível da anomalia do dia selecionado.
+Card exibindo o nível de anomalia do dia selecionado.
 
-✔ Gráfico de histórico
+✔ Gráfico histórico
 
-Evolução do índice ao longo do tempo com faixas de Normal/Atenção/Crítica.
+Visualização temporal do índice com faixas:
 
-✔ Aba Quali (Qualidade da água)
+Normal
+
+Atenção
+
+Crítica
+
+✔ Aba Quali (Qualidade da Água)
+
+Inclui variáveis com coloração baseada no Z-score:
 
 pH
 
@@ -97,9 +90,7 @@ Turbidez
 
 Temperatura
 
-Com coloração baseada em Z-score.
-
-✔ Aba Quanti (Nível e vazão)
+✔ Aba Quanti (Vazão/Nível)
 
 Vazão
 
@@ -109,19 +100,19 @@ Cota referenciada
 
 ✔ Resumo diário via IA
 
-Texto natural gerado automaticamente com base:
+Geração automática de texto interpretativo considerando:
 
-situação do dia
+Situação do dia
 
-variáveis ordenadas por anomalia
+Variáveis ordenadas por anomalia
 
-interpretação qualitativa (normal / leve desvio / forte anomalia)
+Análise qualitativa (normal / leve desvio / forte anomalia)
 
 Sem números, sem listas, sem alucinações.
 
 🧠 Modelagem de Anomalias
 
-O projeto utiliza um ensemble robusto envolvendo:
+O pipeline utiliza um ensemble robusto composto por:
 
 Isolation Forest
 
@@ -131,21 +122,29 @@ One-Class SVM
 
 Elliptic Envelope
 
-Estatística robusta (robust Z-score MAD)
+Estatística robusta (Z-score via MAD)
 
-A combinação de modelos é feita via otimização de pesos Dirichlet, maximizando Silhouette Score com penalização de spreads exagerados.
+A fusão dos modelos é feita com:
 
-Os limiares dos níveis (Normal, Atenção, Crítica) são aprendidos dinamicamente via K-Means.
+Otimização de pesos Dirichlet
+
+Maximização do Silhouette Score
+
+Penalização de spreads exagerados
+
+Os limiares dos níveis Normal/Atenção/Crítica são aprendidos dinamicamente via:
+
+K-Means
 
 🚀 Próximos Passos
 
-Expandir o conjunto de dados (atualmente: maio/24 → outubro/24)
+Expandir o dataset (maio/24 → outubro/24 atualmente)
 
 Suporte à sazonalidade
 
-Ingestão automática contínua
+Ingestão contínua automatizada
 
-Sistema de alertas automáticos (email/WhatsApp)
+Sistema de alertas (email/WhatsApp)
 
 Deploy opcional na nuvem (Azure Container Apps)
 
@@ -159,12 +158,16 @@ Modelagem
 
 Dashboard
 
-LLM
+IA
 
-Equipe:
+Equipe
+
 Pedro Carneiro
+
 Raphael von Zuben
+
 Pedro Lucas Amâncio
+
 Leonardo Marchi
-Gabriel Joaquim
+
 Gabriel Joaquim
